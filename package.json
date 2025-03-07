@@ -1,0 +1,39 @@
+{
+  "name": "nrpc-ts",
+  "version": "1.0.1",
+  "description": "",
+  "type": "commonjs",
+  "private": true,
+  "main": "lib/index.ts",
+  "scripts": {
+    "build": "tsx ts-node ./test/test_class.ts",
+    "show": "tsx ./test/test_show.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.26.0",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "ts-patch": "^3.3.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@types/ws": "^8.18.0",
+    "assert": "^2.1.0",
+    "css-loader": "^7.1.2",
+    "express": "^4.21.2",
+    "html-webpack-plugin": "^5.6.3",
+    "json5": "^2.2.3",
+    "node-addon-api": "*",
+    "process": "^0.11.10",
+    "style-loader": "^4.0.0",
+    "util": "^0.12.5",
+    "webpack": "^5.98.0",
+    "webpack-dev-middleware": "^7.4.2",
+    "ws": "^8.18.1",
+    "zeromq": "file:staging_modules/zeromq_js"
+  }
+}

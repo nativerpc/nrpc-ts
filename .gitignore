@@ -1,0 +1,5 @@
+build/
+staging_modules/
+.backup
+node_modules/
+package-lock.json

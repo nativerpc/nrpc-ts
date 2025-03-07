@@ -1,0 +1,55 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "target": "ES5",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "declaration": true,
+        "lib": ["es2021"],
+        // "lib": [
+        //     "dom",
+        //     "dom.iterable",
+        //     "esnext"
+        // ],
+        "outDir": "./build",
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "noFallthroughCasesInSwitch": true,
+        "resolveJsonModule": true,
+        // "jsx": "react-jsx",
+        // "strict": false,
+        // "experimentalDecorators": true,
+        // See also "ts-patch/compiler" below
+        "plugins": [
+            {
+                "transform": "./lang/common_transpiler"
+            },
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "noEmit": false,
+    },
+    "include": [
+        "lib",
+        "test"
+    ],
+    "exclude": [
+        "node_modules",
+        "staging_modules",
+        "build",
+        "dist",
+        ".backup",
+    ],
+    "ts-node": {
+        // See also "npx ts-node --compiler ts-patch/compiler xxx.ts"
+        "compiler": "ts-patch/compiler",
+        "ignore": [
+            "node_modules/",
+            "staging_modules/",
+            "build/",
+            "dist/",
+            ".backup/",
+        ]
+    },
+}
