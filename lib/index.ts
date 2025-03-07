@@ -36,6 +36,7 @@ export {
     FieldType,
     TypeNames,
     DYNAMIC_OBJECT,
+    DYNAMIC_OBJECT_REMOTE,
     type ClassDescription,
 
     construct_item,
@@ -46,6 +47,7 @@ export {
     assign_values,
     get_class_string,
     get_simple_type,
+    get_remote_type,
 
     init,
     CommandLine,
@@ -107,7 +109,8 @@ namespace nrpc_ts {
     export import FieldType = common_base.FieldType
     export import TypeNames = common_base.TypeNames
     export import DYNAMIC_OBJECT = common_base.DYNAMIC_OBJECT
-    // export import ClassDescription = common_base.ClassDescription
+    export import DYNAMIC_OBJECT_REMOTE = common_base.DYNAMIC_OBJECT_REMOTE
+    export type ClassDescription = common_base.ClassDescription
 
     export import construct_item = common_base.construct_item
     export import destroy_item = common_base.destroy_item
@@ -117,6 +120,7 @@ namespace nrpc_ts {
     export import assign_values = common_base.assign_values
     export import get_class_string = common_base.get_class_string
     export import get_simple_type = common_base.get_simple_type
+    export import get_remote_type = common_base.get_remote_type
 
     export import init = common_base.init
     export import CommandLine = common_base.CommandLine

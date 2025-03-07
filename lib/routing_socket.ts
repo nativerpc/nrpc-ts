@@ -44,6 +44,7 @@ import {
     type Dictionary,
     type Type,
     DYNAMIC_OBJECT,
+    DYNAMIC_OBJECT_REMOTE,
     assign_values,
     FieldInfo,
     MethodInfo,
@@ -56,6 +57,7 @@ import {
     is_dictionary_list,
     g_all_services,
     get_simple_type,
+    get_remote_type,
 } from "./common_base"
 import nrpc_ts from './index'
 
@@ -580,7 +582,7 @@ class RoutingSocket {
                 fields.push({
                     type_name: key,
                     field_name: field2.field_name,
-                    field_type: field2.field_type,
+                    field_type: get_remote_type(field2.field_type),
                     id_value: field2.id_value,
                     offset: -1,
                     size: -1,
@@ -609,8 +611,8 @@ class RoutingSocket {
                 methods.push({
                     service_name: service_info.service_name,
                     method_name: method_name,
-                    request_type: method_info.request_type,
-                    response_type: method_info.response_type,
+                    request_type: get_remote_type(method_info.request_type),
+                    response_type: get_remote_type(method_info.response_type),
                     id_value: method_info.id_value,
                     local: method_info.local,
                     method_errors: method_info.method_errors,
@@ -707,6 +709,7 @@ class RoutingSocket {
             } else {
                 var my_type_info = this.known_types[type_name]
                 for (var field_info of type_fields) {
+                    assert(field_info.field_type)
                     var field_name = field_info.field_name
                     assert(field_info.id_value > 0)
                     if (!(field_name in my_type_info.fields)) {
@@ -721,7 +724,7 @@ class RoutingSocket {
                         to_add.push({
                             type_name: type_name,
                             field_name: field_name,
-                            field_type: field_info.field_type,
+                            field_type: get_remote_type(field_info.field_type),
                             id_value: field_info.id_value
                         })
                     }
@@ -786,8 +789,8 @@ class RoutingSocket {
                             service_name: service_name,
                             method_name: method_info.method_name,
                             id_value: method_info.id_value,
-                            request_type: method_info.request_type,
-                            response_type: method_info.response_type,
+                            request_type: get_remote_type(method_info.request_type),
+                            response_type: get_remote_type(method_info.response_type),
                         })
                     }
                     else {

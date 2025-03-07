@@ -206,10 +206,24 @@ project(nrpc_ts VERSION 1.0.1)
         COMMAND cmd /c npm run build.native
         WORKING_DIRECTORY  ${CMAKE_CURRENT_LIST_DIR}/staging_modules/zeromq_js
     )
-    # execute_process(
-    #     COMMAND cmd /c node node_modules/@aminya/cmake-ts/build/main.js nativeonly
-    #     WORKING_DIRECTORY  ${CMAKE_CURRENT_LIST_DIR}/staging_modules/zeromq_js
-    # )
+
+######################
+# Build dependency 3 #
+######################
+    message(STATUS "${Yellow}Build dependency 3${Reset}")
+    execute_process(
+        COMMAND cmd /c node node_modules/@aminya/cmake-ts/build/main.js nativeonly
+        WORKING_DIRECTORY  ${CMAKE_CURRENT_LIST_DIR}/staging_modules/zeromq_js
+    )
+
+# ######################
+# # Build dependency 3 #
+# ######################
+# message(STATUS "${Yellow}Build dependency 3${Reset}")
+# execute_process(
+#     COMMAND cmd /c npm i ./staging_modules/zeromq_js
+#     WORKING_DIRECTORY  ${CMAKE_CURRENT_LIST_DIR}
+# )
 
 #####################
 # Find dependencies #

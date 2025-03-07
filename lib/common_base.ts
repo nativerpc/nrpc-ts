@@ -34,6 +34,7 @@
  *      assign_values
  *      get_class_string
  *      get_simple_type
+ *      get_remote_type
  *
  *      init
  *      CommandLine
@@ -247,7 +248,8 @@ const TypeNames = [
     'dict'
 ]
 
-const DYNAMIC_OBJECT = 'dict'
+const DYNAMIC_OBJECT = 'any'
+const DYNAMIC_OBJECT_REMOTE = 'dict'
 
 class FieldInfo {
     field_name: string = ''
@@ -384,6 +386,7 @@ function register_class(clazz, field_options, class_info_) {
                 request_type: req_type['type'],
                 response_type: res_type,
                 id_value: field_options[item.name] ?? 0,
+                local: true,
             })
 
             assert(req_type['type'])
@@ -455,6 +458,9 @@ function construct_item(clazz: any, obj_data: any, args?: any) {
                 obj_data[key] = null
             }
             else if (field_type.startsWith('Dictionary<')) {
+                obj_data[key] = {}
+            }
+            else if (field_type.startsWith('any')) {
                 obj_data[key] = {}
             }
             else if (field_type == 'any[]') {
@@ -595,6 +601,13 @@ function get_class_string(clazz: any, obj_data: any) {
 
 function get_simple_type(item) {
     return item.name
+}
+
+function get_remote_type(type_name) {
+    const result = type_name == DYNAMIC_OBJECT ? DYNAMIC_OBJECT_REMOTE :
+        type_name == DYNAMIC_OBJECT_REMOTE ? DYNAMIC_OBJECT :
+        type_name
+    return result
 }
 
 function init() {
@@ -830,6 +843,7 @@ export {
     FieldType,
     TypeNames,
     DYNAMIC_OBJECT,
+    DYNAMIC_OBJECT_REMOTE,
     type ClassDescription,
 
     construct_item,
@@ -840,6 +854,7 @@ export {
     assign_values,
     get_class_string,
     get_simple_type,
+    get_remote_type,
 
     init,
     CommandLine,

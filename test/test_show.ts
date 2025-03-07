@@ -57,7 +57,7 @@ class ServerApplication {
 
   async start() {
     const cmd = new nrpc_ts.CommandLine({
-      port: 9000,
+      port: 9002,
       format: 'json',
       rate: 1.0,
       verbose: 0,
@@ -73,7 +73,7 @@ class ServerApplication {
         HelloResponse,
         HelloService: [HelloService, this],
       },
-      caller: 'test_show_cli_ts',
+      caller: 'test_show_ts',
     })
 
 
@@ -81,9 +81,9 @@ class ServerApplication {
     await sock.bind('127.0.0.1', cmd['port'])
 
     const this_dir = path.dirname(__filename).replaceAll('\\', '/')
-    console.log(`EXEC test/test_show_cli_client.ts`)
+    console.log(`EXEC test/test_show_client.ts`)
     await nrpc_ts.execCommand(
-        `node node_modules/ts-node/dist/bin.js ${this_dir}/test_show_cli_client.ts from_server=1 port=${cmd['port']} rate=${cmd['rate']}`
+        `node node_modules/ts-node/dist/bin.js ${this_dir}/test_show_client.ts from_server=1 port=${cmd['port']} rate=${cmd['rate']}`
     )
 
     // while (true) {

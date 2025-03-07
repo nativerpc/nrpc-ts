@@ -50,7 +50,7 @@ class HelloService {
 class ClientApplication {
   async start() {
     const cmd = new nrpc_ts.CommandLine({
-      port: 9000,
+      port: 9002,
       format: 'json',
       rate: 1.0,
       verbose: 0,
@@ -63,7 +63,7 @@ class ClientApplication {
       type: nrpc_ts.SocketType.CONNECT,
       protocol: nrpc_ts.ProtocolType.TCP,
       format: nrpc_ts.FormatType.JSON,
-      caller: 'client.ts',
+      caller: 'test_show_client_ts',
       types: {
         HelloRequest,
         HelloResponse,
