@@ -39,7 +39,7 @@ class TestApplication {
             type: nrpc_ts.SocketType.BIND,
             protocol: nrpc_ts.ProtocolType.TCP,
             format: nrpc_ts.FormatType.JSON,
-            caller: 'test_class_ts',
+            name: 'test_class_ts',
             port: 9000,
             types: []
         })
@@ -49,7 +49,7 @@ class TestApplication {
             type: nrpc_ts.SocketType.CONNECT,
             protocol: nrpc_ts.ProtocolType.TCP,
             format: nrpc_ts.FormatType.JSON,
-            caller: 'test_class_ts',
+            name: 'test_class_ts',
             port: 9000,
             types: []
         })
@@ -59,7 +59,7 @@ class TestApplication {
             type: nrpc_ts.SocketType.BIND,
             protocol: nrpc_ts.ProtocolType.WS,
             format: nrpc_ts.FormatType.JSON,
-            caller: 'test_class_ts',
+            name: 'test_class_ts',
             port: 9000,
             types: []
         })
@@ -69,7 +69,7 @@ class TestApplication {
             type: nrpc_ts.SocketType.CONNECT,
             protocol: nrpc_ts.ProtocolType.WS,
             format: nrpc_ts.FormatType.JSON,
-            caller: 'test_class_ts',
+            name: 'test_class_ts',
             port: 9000,
             types: []
         })

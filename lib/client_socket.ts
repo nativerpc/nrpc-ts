@@ -28,7 +28,7 @@ class ClientSocket {
     ip_address: string
     port: number
     port_rev: number
-    entry_file: string
+    socket_name: string
     server_signature: Buffer
     server_signature_rev: Buffer
     client_signature: Buffer
@@ -49,12 +49,12 @@ class ClientSocket {
     norm_messages_: any[]
     rev_messages_: any[]
 
-    constructor(ip_address, port, port_rev, entry_file) {
+    constructor(ip_address, port, port_rev, socket_name) {
         this.client_id = 0
         this.ip_address = ip_address
         this.port = port
         this.port_rev = port_rev
-        this.entry_file = entry_file
+        this.socket_name = socket_name
         this.server_signature = Buffer.from('server:0')
         this.server_signature_rev = Buffer.from('rev:server:0')
         this.client_signature = null
@@ -71,7 +71,7 @@ class ClientSocket {
             main_port: port,
             main_port_rev: port_rev,
             host: 'unknown',
-            entry_file: this.entry_file,
+            socket_name: this.socket_name,
             start_time: new Date().toISOString(),
             client_signature: null,
             client_signature_rev: null,

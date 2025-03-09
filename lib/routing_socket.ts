@@ -66,7 +66,7 @@ class RoutingSocket {
     socket_type: SocketType
     protocol_type: ProtocolType
     format_type: FormatType
-    entry_file: string
+    socket_name: string
     ip_address: string
     port: number
     is_alive: boolean
@@ -84,7 +84,7 @@ class RoutingSocket {
         this.socket_type = options.type
         this.protocol_type = options.protocol
         this.format_type = options.format
-        this.entry_file = options.caller
+        this.socket_name = options.name
         this.ip_address = ''
         this.port = options.port ?? 0
         this.is_alive = true
@@ -112,10 +112,10 @@ class RoutingSocket {
         this.port = port
 
         if (this.protocol_type == ProtocolType.TCP) {
-            this.server_socket = new nrpc_ts.ServerSocket(ip_address, port, port + 10000, this.entry_file)
+            this.server_socket = new nrpc_ts.ServerSocket(ip_address, port, port + 10000, this.socket_name)
         }
         else {
-            this.server_socket = new nrpc_ts.ServerSocketWs(ip_address, port, port + 10000, this.entry_file)
+            this.server_socket = new nrpc_ts.ServerSocketWs(ip_address, port, port + 10000, this.socket_name)
         }
 
         await this.server_socket.bind()
@@ -132,9 +132,9 @@ class RoutingSocket {
         this.port = port
 
         if (this.protocol_type == ProtocolType.TCP) {
-            this.client_socket = new nrpc_ts.ClientSocket(ip_address, port, port + 10000, this.entry_file)
+            this.client_socket = new nrpc_ts.ClientSocket(ip_address, port, port + 10000, this.socket_name)
         } else {
-            this.client_socket = new nrpc_ts.ClientSocketWs(ip_address, port, port + 10000, this.entry_file)
+            this.client_socket = new nrpc_ts.ClientSocketWs(ip_address, port, port + 10000, this.socket_name)
         }
 
         this.do_sync = sync
@@ -529,7 +529,7 @@ class RoutingSocket {
                     client_id: item.client_id,
                     is_validated: item.is_validated,
                     is_lost: item.is_lost,
-                    entry_file: item.client_metadata['entry_file'],
+                    socket_name: item.client_metadata['socket_name'],
                 })
             }
         }
@@ -549,7 +549,7 @@ class RoutingSocket {
             client_count: this.socket_type == SocketType.CONNECT ? 0 : this.server_socket.clients.length,
             clients: clients,
             client_ids: client_ids,
-            entry_file: this.entry_file,
+            socket_name: this.socket_name,
             ip_address: this.ip_address,
             port: this.port,
             format: 'json',
@@ -629,7 +629,7 @@ class RoutingSocket {
                     client_id: item.client_id,
                     is_validated: item.is_validated,
                     is_lost: item.is_lost,
-                    entry_file: item.client_metadata['entry_file'],
+                    socket_name: item.client_metadata['socket_name'],
                     client_metadata: item.client_metadata,
                 })
             }
@@ -639,7 +639,7 @@ class RoutingSocket {
         if (this.socket_type == SocketType.CONNECT) {
             servers.push({
                 port: this.client_socket.port,
-                entry_file: this.client_socket.server_metadata['entry_file'],
+                socket_name: this.client_socket.server_metadata['socket_name'],
                 server_metadata: this.client_socket.server_metadata,
             })
         }
@@ -663,7 +663,7 @@ class RoutingSocket {
             this_socket: this_socket,
             clients: clients,
             servers: servers,
-            entry_file: this.entry_file,
+            socket_name: this.socket_name,
         }
         return result
     }

@@ -42,7 +42,7 @@ class ServingSocket {
     socket_type: SocketType
     protocol_type: ProtocolType
     format_type: FormatType
-    entry_file_: string
+    socket_name_: string
     main_page_: string
     main_page_html_: string
     main_page_tsx_: string
@@ -64,7 +64,7 @@ class ServingSocket {
         this.socket_type = options.type
         this.protocol_type = options.protocol
         this.format_type = options.format
-        this.entry_file_ = options.caller
+        this.socket_name_ = options.name
         this.main_page_ = ''
         this.main_page_html_ = ''
         this.main_page_tsx_ = ''
@@ -366,7 +366,7 @@ class ServingSocket {
             protocol: this.protocol_type.toString(),
             format: this.format_type.toString(),
             main_page: this.main_page_,
-            entry_file: this.entry_file_,
+            socket_name: this.socket_name_,
             servers: Object.keys(this.known_servers_).length,
             methods: method_count,
             command_line: this.command_line_,

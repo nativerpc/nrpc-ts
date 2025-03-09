@@ -49,7 +49,7 @@ class PageApplication {
             types: {
                 AppService,
             },
-            caller: 'test_express_page_ts'
+            name: 'test_express_page_ts'
         })
 
         // @ts-ignore

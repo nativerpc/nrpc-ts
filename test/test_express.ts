@@ -39,7 +39,7 @@ class TestApplication {
       types: {
         AppService: [AppService, this],
       },
-      caller: 'test_express_ts',
+      name: 'test_express_ts',
       command_line: this.cmd_,
     })
   

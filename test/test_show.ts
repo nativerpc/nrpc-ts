@@ -73,7 +73,7 @@ class ServerApplication {
         HelloResponse,
         HelloService: [HelloService, this],
       },
-      caller: 'test_show_ts',
+      name: 'test_show_ts',
     })
 
 
@@ -93,7 +93,7 @@ class ServerApplication {
     //       continue
     //     }
     //     const res = await sock.client_call(client_id, nrpc_ts.RoutingMessage.GetAppInfo, {})
-    //     console.log(`SEND GetAppInfo, ${client_id}, ${res["entry_file"]}, ${res["this_socket"]}`)
+    //     console.log(`SEND GetAppInfo, ${client_id}, ${res["socket_name"]}, ${res["this_socket"]}`)
     //   }
     // }
 

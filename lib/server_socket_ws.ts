@@ -41,7 +41,7 @@ class ServerSocketWs {
     ip_address: string
     port: number
     port_rev: number
-    entry_file: string
+    socket_name: string
     next_connection: number
     next_index: number
     server_signature: Buffer
@@ -60,12 +60,12 @@ class ServerSocketWs {
     norm_messages_: LinkedList<Buffer[]>
     rev_messages_: LinkedList<Buffer[]>
 
-    constructor(ip_address: string, port: number, port_rev: number, entry_file: string) {
+    constructor(ip_address: string, port: number, port_rev: number, socket_name: string) {
         this.server_id = 0
         this.ip_address = ip_address
         this.port = port
         this.port_rev = port_rev
-        this.entry_file = entry_file
+        this.socket_name = socket_name
         this.next_connection = 0x10203000
         this.next_index = 0
         this.server_signature = Buffer.from('server:0')
@@ -80,7 +80,7 @@ class ServerSocketWs {
             main_port: port,
             main_port_rev: port_rev,
             host: 'unknown',
-            entry_file: this.entry_file,
+            socket_name: this.socket_name,
             start_time: new Date().toISOString(),
             server_signature: nrpc_ts.base64_encode(this.server_signature),
             server_signature_rev: nrpc_ts.base64_encode(this.server_signature_rev),

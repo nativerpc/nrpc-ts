@@ -90,7 +90,7 @@ interface RoutingSocketOptions {
     type: SocketType
     protocol: ProtocolType
     format: FormatType
-    caller: string
+    name: string
     types: { [name: string]: any }
     port?: number
 }
@@ -131,7 +131,7 @@ interface SocketMetadataInfo {
     main_port: int
     main_port_rev: int
     host: string
-    entry_file: string
+    socket_name: string
     start_time: string
     client_signature?: string
     client_signature_rev?: string
@@ -170,10 +170,10 @@ interface ApplicationInfo {
         client_id: number
         is_validated: boolean
         is_lost: boolean
-        entry_file: string
+        socket_name: string
     }[]
     client_ids: number[]
-    entry_file: string
+    socket_name: string
     ip_address: string
     port: number
     format: string
@@ -219,15 +219,15 @@ interface SchemaInfo {
         client_id: number
         is_validated: boolean
         is_lost: boolean
-        entry_file: string
+        socket_name: string
         client_metadata: SocketMetadataInfo
     }[]
     servers: {
         port: number
-        entry_file: string
+        socket_name: string
         server_metadata: SocketMetadataInfo
     }[]
-    entry_file: string
+    socket_name: string
 }
 
 enum FieldType {
@@ -797,7 +797,7 @@ interface ServingSocketOptions {
     type: SocketType
     protocol: ProtocolType
     format: FormatType
-    caller: string
+    name: string
     main_page?: string
     static_dir?: string
     types: { [name: string]: any }
@@ -813,7 +813,7 @@ interface ServingSocketClientInfo {
     protocol: string
     format: string
     main_page: string
-    entry_file: string
+    socket_name: string
     servers: number
     methods: number
     command_line: string

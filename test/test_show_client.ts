@@ -63,7 +63,7 @@ class ClientApplication {
       type: nrpc_ts.SocketType.CONNECT,
       protocol: nrpc_ts.ProtocolType.TCP,
       format: nrpc_ts.FormatType.JSON,
-      caller: 'test_show_client_ts',
+      name: 'test_show_client_ts',
       types: {
         HelloRequest,
         HelloResponse,

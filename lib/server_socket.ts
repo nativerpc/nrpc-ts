@@ -37,7 +37,7 @@ class ServerSocket {
     ip_address: string
     port: number
     port_rev: number
-    entry_file: string
+    socket_name: string
     next_index: number
     server_signature: Buffer
     server_signature_rev: Buffer
@@ -53,12 +53,12 @@ class ServerSocket {
     norm_messages_: Buffer[]
     rev_messages_: Buffer[]
 
-    constructor(ip_address: string, port: number, port_rev: number, entry_file: string) {
+    constructor(ip_address: string, port: number, port_rev: number, socket_name: string) {
         this.server_id = 0
         this.ip_address = ip_address
         this.port = port
         this.port_rev = port_rev
-        this.entry_file = entry_file
+        this.socket_name = socket_name
         this.server_id = 0
         this.next_index = 0
         this.server_signature = Buffer.from('server:0')
@@ -71,7 +71,7 @@ class ServerSocket {
             main_port: port,
             main_port_rev: port_rev,
             host: 'unknown',
-            entry_file: this.entry_file,
+            socket_name: this.socket_name,
             start_time: new Date().toISOString(),
             server_signature: nrpc_ts.base64_encode(this.server_signature),
             server_signature_rev: nrpc_ts.base64_encode(this.server_signature_rev),
